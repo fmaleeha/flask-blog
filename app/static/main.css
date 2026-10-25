@@ -1,0 +1,413 @@
+/* ==========================================================
+   Flask Blog — Editorial theme
+   Navy ink + brass accent, serif for reading, clean sans for UI
+   Works on top of Bootstrap 4 (load this file AFTER bootstrap)
+   ========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&display=swap');
+
+/* ---------- Tokens ---------- */
+:root {
+    --ink: #0f1b2d;
+    --ink-soft: #1c2b44;
+    --brass: #b8934a;
+    --brass-deep: #8a6a2c;
+    --paper: #f5f6f8;
+    --surface: #ffffff;
+    --line: #e4e7ec;
+    --text: #2b3340;
+    --text-muted: #6b7480;
+
+    --font-ui: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --font-read: 'Newsreader', Georgia, 'Times New Roman', serif;
+
+    --radius: 6px;
+    --shadow-rest: 0 1px 2px rgba(15, 27, 45, .05);
+    --shadow-lift: 0 14px 32px -12px rgba(15, 27, 45, .22);
+}
+
+/* ---------- Global ---------- */
+body {
+    font-family: var(--font-ui);
+    background: var(--paper);
+    color: var(--text);
+    margin-top: 5.5rem;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-read);
+    color: var(--ink);
+    font-weight: 600;
+    letter-spacing: -.01em;
+}
+
+a {
+    color: var(--ink);
+}
+
+a:hover {
+    color: var(--brass-deep);
+}
+
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+::selection {
+    background: var(--brass);
+    color: var(--ink);
+}
+
+:focus-visible {
+    outline: 2px solid var(--brass);
+    outline-offset: 2px;
+}
+
+/* ---------- Navbar ---------- */
+.bg-steel {
+    background: var(--ink);
+    border-bottom: 2px solid var(--brass);
+    box-shadow: 0 6px 20px rgba(15, 27, 45, .18);
+    padding-top: .85rem;
+    padding-bottom: .85rem;
+}
+
+.navbar-brand {
+    font-family: var(--font-read);
+    font-weight: 600;
+    font-size: 1.65rem;
+    letter-spacing: .01em;
+    color: #fff !important;
+}
+
+.site-header .navbar-nav .nav-link {
+    position: relative;
+    color: rgba(255, 255, 255, .72);
+    font-weight: 500;
+    font-size: .95rem;
+    padding: .5rem .9rem;
+    transition: color .2s ease;
+}
+
+.site-header .navbar-nav .nav-link::after {
+    content: "";
+    position: absolute;
+    left: .9rem;
+    right: .9rem;
+    bottom: .15rem;
+    height: 2px;
+    background: var(--brass);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .25s ease;
+}
+
+.site-header .navbar-nav .nav-link:hover {
+    color: #fff;
+}
+
+.site-header .navbar-nav .nav-link:hover::after,
+.site-header .navbar-nav .nav-link.active::after {
+    transform: scaleX(1);
+}
+
+.site-header .navbar-nav .nav-link.active {
+    color: #fff;
+    font-weight: 600;
+}
+
+.navbar-dark .navbar-toggler {
+    border-color: rgba(255, 255, 255, .35);
+}
+
+/* ---------- Cards / sections ---------- */
+.content-section {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 28px 30px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-rest);
+}
+
+/* Blog post cards get a brass edge and lift when hovered */
+article.content-section {
+    border-left: 3px solid var(--line);
+    transition: border-color .25s ease, box-shadow .25s ease, transform .25s ease;
+}
+
+article.content-section:hover {
+    border-left-color: var(--brass);
+    box-shadow: var(--shadow-lift);
+    transform: translateY(-3px);
+}
+
+/* ---------- Post title ---------- */
+.article-title {
+    font-family: var(--font-read);
+    color: var(--ink);
+    font-weight: 600;
+    font-size: 1.85rem;
+    line-height: 1.25;
+    letter-spacing: -.015em;
+    margin-bottom: .6rem;
+    transition: color .2s ease;
+}
+
+a.article-title {
+    text-decoration: none;
+}
+
+a.article-title:hover {
+    color: var(--brass-deep);
+}
+
+/* ---------- Post content ---------- */
+.article-content {
+    font-family: var(--font-read);
+    font-size: 1.1rem;
+    line-height: 1.85;
+    white-space: pre-line;
+    color: #3a4352;
+    margin-top: 12px;
+    max-width: 68ch;
+}
+
+/* ---------- Images ---------- */
+.article-img {
+    height: 52px;
+    width: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 16px;
+    border: 2px solid var(--surface);
+    box-shadow: 0 0 0 2px var(--brass);
+}
+
+.account-img {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--surface);
+    box-shadow: 0 0 0 3px var(--brass), 0 14px 30px -10px rgba(15, 27, 45, .35);
+    margin-right: 28px;
+    margin-bottom: 20px;
+}
+
+/* ---------- Metadata ---------- */
+.article-metadata {
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 10px;
+    margin-bottom: 18px;
+    font-size: .88rem;
+    color: var(--text-muted);
+}
+
+.article-metadata a {
+    color: var(--ink);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.article-metadata a:hover {
+    color: var(--brass-deep);
+}
+
+.article-metadata small {
+    font-size: .85rem;
+}
+
+/* ---------- Account ---------- */
+.account-heading {
+    font-family: var(--font-read);
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: var(--ink);
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+    font-family: var(--font-ui);
+    border-radius: var(--radius);
+    font-weight: 600;
+    font-size: .92rem;
+    letter-spacing: .01em;
+    padding: .55rem 1.3rem;
+    transition: background-color .2s ease, color .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+.btn:focus,
+.btn.focus {
+    box-shadow: 0 0 0 .2rem rgba(184, 147, 74, .35);
+}
+
+.btn-info,
+.btn-info:not(:disabled):not(.disabled):active,
+.btn-info:not(:disabled):not(.disabled).active {
+    background: var(--ink);
+    border: 1.5px solid var(--ink);
+    color: #fff;
+}
+
+.btn-info:hover,
+.btn-info:focus {
+    background: var(--ink-soft);
+    border-color: var(--brass);
+    color: #fff;
+}
+
+.btn-outline-info {
+    background: transparent;
+    border: 1.5px solid var(--ink);
+    color: var(--ink);
+}
+
+.btn-outline-info:hover,
+.btn-outline-info:focus,
+.btn-outline-info:not(:disabled):not(.disabled):active {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: #fff;
+}
+
+.btn-sm {
+    padding: .3rem .8rem;
+    font-size: .8rem;
+}
+
+/* ---------- Forms ---------- */
+legend {
+    font-family: var(--font-read);
+    font-weight: 600;
+    color: var(--ink);
+}
+
+legend.border-bottom {
+    border-color: var(--line) !important;
+    padding-bottom: .6rem;
+}
+
+.form-group label {
+    font-weight: 600;
+    font-size: .88rem;
+    color: var(--ink);
+    margin-bottom: .35rem;
+}
+
+.form-control {
+    font-family: var(--font-ui);
+    border-radius: var(--radius);
+    border: 1px solid #cfd5de;
+    background: #fff;
+    padding: .65rem .9rem;
+    height: auto;
+    transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.form-control:focus {
+    border-color: var(--brass);
+    box-shadow: 0 0 0 .2rem rgba(184, 147, 74, .22);
+}
+
+.form-control::placeholder {
+    color: #9aa3af;
+}
+
+textarea.form-control {
+    line-height: 1.7;
+}
+
+/* ---------- Sidebar ---------- */
+.list-group-item {
+    border: none;
+    border-left: 3px solid transparent;
+    border-bottom: 1px solid var(--line);
+    padding: 13px 16px;
+    color: var(--text);
+    transition: background-color .2s ease, border-color .2s ease;
+}
+
+.list-group-item:last-child {
+    border-bottom: none;
+}
+
+.list-group-item:hover {
+    background: #f1f3f6;
+    border-left-color: var(--brass);
+}
+
+/* ---------- Alerts ---------- */
+.alert {
+    border: none;
+    border-left: 4px solid currentColor;
+    border-radius: var(--radius);
+    font-weight: 500;
+    padding: .9rem 1.2rem;
+}
+
+/* ---------- Pagination ---------- */
+.page-link {
+    border-radius: var(--radius);
+    color: var(--ink);
+    border-color: var(--line);
+}
+
+.page-link:hover {
+    color: var(--brass-deep);
+    background: #f1f3f6;
+}
+
+.page-item.active .page-link {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: #fff;
+}
+
+/* ---------- Modal (delete confirmation) ---------- */
+.modal-content {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 24px 60px -12px rgba(15, 27, 45, .4);
+}
+
+.modal-header,
+.modal-footer {
+    border-color: var(--line);
+}
+
+/* ---------- Footer ---------- */
+footer {
+    color: var(--text-muted);
+    font-size: .88rem;
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 576px) {
+    .content-section {
+        padding: 22px 20px;
+    }
+
+    .article-title {
+        font-size: 1.5rem;
+    }
+
+    .account-img {
+        width: 100px;
+        height: 100px;
+        margin-right: 18px;
+    }
+}
+
+/* ---------- Respect reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
+
+    article.content-section:hover {
+        transform: none;
+    }
+}
